@@ -36,7 +36,7 @@ export default function Post({ profileUrl,id, username, caption, comments, photo
             <div className="post__center">
                 <img className="post__photoUrl" src={photoUrl}/>
             </div>
-            <div>
+            <div className="post__caption">
                 <p><span style={{fontWeight:"500", marginRight: "4px"}}>{username}</span>{caption}</p>
             </div>
             {comments ? comments.map((comment) => 
