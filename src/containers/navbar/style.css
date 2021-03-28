@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    padding: 12px 24px;
+    justify-content: space-between;
+    background-color: white;
+    position: relative;
+}
+
+.titleBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleBox > * {
+    display: block;
+    margin: 0px 10px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 500;
+}
