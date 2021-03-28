@@ -14,21 +14,18 @@ export default function Feed() {
     }, [])
     return (
         <div className="feed">
-            
-{posts.map(({id, post})=>{
+            {posts.map(({id, post})=>{
 
-return (<Post 
-key ={id}
-id={id}
-profileUrl={post.profileUrl}
-username={post.username}
-photoUrl={post.photoUrl}
-caption={post.caption}
-/>
-)
-})}
-
-
+            return (<Post 
+                    key ={id}
+                    id={id}
+                    profileUrl={post.profileUrl}
+                    username={post.username}
+                    photoUrl={post.photoUrl}
+                    caption={post.caption}
+                />
+            )}
+        )}
         </div>
     
     )
