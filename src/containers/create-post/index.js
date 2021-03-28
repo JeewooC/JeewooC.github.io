@@ -52,7 +52,9 @@ export default function CreatePost() {
                     })
 
                 }) 
-                
+                setCaption("")
+                setProgress(0)
+                setImage(null)
             }
             
             )

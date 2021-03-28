@@ -1,16 +1,34 @@
+import { PostAddSharp } from "@material-ui/icons";
+import { db } from "../../firebase";
 import Post from "../post";
-
+import{useState, useEffect} from 'react'
 
 export default function Feed() {
-    
+    const [posts, setPosts] = useState([]);
+    useEffect(()=>{
+        db.collection("posts").onSnapshot((snapshot) =>
+        {
+            setPosts(snapshot.docs.map((doc) => ({id: doc.id, post: doc.data()})))
+        })
+
+    }, [])
     return (
         <div className="feed">
-            <Post profileUrl ="https://firebasestorage.googleapis.com/v0/b/viridi-c4949.appspot.com/o/images%2FrduIGHcLIN.jpg?alt=media&token=0a27022d-e129-4203-ab91-a2f3f16974dc" 
-            username ="testuser"
-            photoUrl= "https://firebasestorage.googleapis.com/v0/b/viridi-c4949.appspot.com/o/images%2FO2zOFHm5Ie.jpg?alt=media&token=c792d15b-257c-4cc2-a8b7-27536501dd45"
-            caption="this is the first post lol"
-            />
             
+{posts.map(({id, post})=>{
+
+return (<Post 
+key ={id}
+id={id}
+profileUrl={post.profileUrl}
+username={post.username}
+photoUrl={post.photoUrl}
+caption={post.caption}
+/>
+)
+})}
+
+
         </div>
     
     )
