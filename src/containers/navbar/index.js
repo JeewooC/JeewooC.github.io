@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import "./style.css"
 import { SignInBtn } from '../../components'
+import { UserContext } from '../../contexts/user';
 
-export default function index() {
+export default function Navbar() {
+
+    const [user, setUser] = useContext(UserContext).user;
+
     return (
         <div className="navbar">
             <div className="titleBox">
@@ -11,7 +15,11 @@ export default function index() {
             </div>
             
 
-           <SignInBtn />
+           {user ? (
+               <div className="verticalCenter">
+                    <img src={user.photoURL} className="profilePhoto"/> 
+                </div>
+           ) : <SignInBtn />}
         </div>
     )
 }
