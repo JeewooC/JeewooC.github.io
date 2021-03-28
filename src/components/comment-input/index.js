@@ -1,50 +1,51 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { db } from "../../firebase";
 import "./style.css";
 
 export default function CommentInput({ comments, id, user }) {
+  const [user, setUser] = useContext(UserContext).user;
   const [comment, setComment] = useState("");
   const [commentMap, setcommentMap] = useState(comments ? comments : []);
+  //const [commentArray, setCommentArray] = useState (comments ? comments : []);
 
-  const addComment = () => {
-    // Add a new document in collection "cities"
+    const addComment = () => {
+      if (comment != ""){
+        commentMap.push({
+          comment: comment,
+          username: user.displayName,
+      }
 
-    commentMap.push({
-      comment: comment,
-      username: user.displayName,
-    });
+      db.collection("posts").doc(id).update({
+          comments: commentMap,
+        })
+        .then(function () {
+          setComment("")
+          console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+          console.error("Error writing document: ", error);
+        })
 
-    db.collection("posts")
-      .doc(id)
-      .update({
-        comments: commentMap,
-      })
-      .then(function () {
-        console.log("Document successfully written!");
-      })
-      .catch(function (error) {
-        console.error("Error writing document: ", error);
-      });
+      setComment("");
+    };
 
-    setComment("");
+    return (
+      <div className="commentInput">
+        <textarea
+          rows="1"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          className="commentInput__textarea"
+          placeholder="Add a comment.."
+        ></textarea>
+
+        <button
+          onClick={addComment}
+          className="button commentInput__button"
+        >
+          Post
+        </button>
+      </div>
+    );
   };
-
-  return (
-    <div className="commentInput">
-      <textarea
-        rows="1"
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        className="commentInput__textarea"
-        placeholder="Add a comment.."
-      ></textarea>
-
-      <button
-        onClick={addComment}
-        className="button commentInput__button"
-      >
-        Post
-      </button>
-    </div>
-  );
 }
