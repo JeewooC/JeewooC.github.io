@@ -42,13 +42,13 @@ export default function CreatePost() {
             () =>{
                 storage.ref("images").child(`${imageName}.jpg`)
                 .getDownloadURL()
-                .then((imageUrl) => {
+                .then((url) => {
                      db.collection("posts").add({
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                         caption: caption,
-                        photoUrl: imageUrl,
                         username: user.email.replace("@gmail.com", ""),
-                        photoUrl: user.photoUrl
+                        photoUrl: url
+                        
                     })
 
                 }) 
