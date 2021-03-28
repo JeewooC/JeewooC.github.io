@@ -1,6 +1,6 @@
 import React from 'react'
 import { Comment } from '../../components'
-import { db } from '../../firebase'
+import { db, storage } from '../../firebase'
 import "./style.css"
 export default function Post({ profileUrl,id, username, caption, comments, user,photoUrl }) {
     
@@ -11,7 +11,6 @@ export default function Post({ profileUrl,id, username, caption, comments, user,
             console.log("delete successful")
         }).catch(function(error){
             console.log(`Error ${error}`)
-
         })
         db.collection("posts").doc(id).delete().then(function(){
             console.log("delete successful")
