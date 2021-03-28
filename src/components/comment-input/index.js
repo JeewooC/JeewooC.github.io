@@ -42,10 +42,6 @@ export default function CommentInput({ comments, id, user }) {
       <button
         onClick={addComment}
         className="button commentInput__button"
-        style={{
-          color: comment ? "gray" : "lightgrey",
-          fontWeight: comment ? "600" : "500",
-        }}
       >
         Post
       </button>

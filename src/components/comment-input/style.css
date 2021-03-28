@@ -9,7 +9,11 @@
     flex: 1;
   }
   .commentInput__button {
+    background-color: white;
+    border: none;
     margin-left: 24px;
+    color: black;
+    font-weight: 500;
   }
   
   .commentInput__textarea {
@@ -18,6 +22,9 @@
     font-size: 14px;
     resize: none;
     margin: 8px 0px;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   }
   
   .commentInput__textarea {
