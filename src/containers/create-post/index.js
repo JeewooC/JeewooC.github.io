@@ -76,6 +76,7 @@ export default function CreatePost() {
                     <div className ="createPost__imagePreview">
                         <img id="image-preview" alt="" />
                         </div>
+                        
                 </div>
              <div className="createPost_loggedInBottom">
              <div className="createPost__imageUpload">
